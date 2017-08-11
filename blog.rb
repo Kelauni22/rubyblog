@@ -1,11 +1,10 @@
 #Each time a new post is created, it will be an instance of the Post object
 
 
-#Author has a name, a password, and a series of posts (own class).
+#Author has a name and a series of posts (own class).
 class Author
-  def initialize(name, password, post)
+  def initialize(name, post)
     @name = name
-    @password = password
     @post = post
   end
 end
