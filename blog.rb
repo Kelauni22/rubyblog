@@ -27,4 +27,16 @@ class Comments
     @comment = comment
 end
 
-#Ask the user for a name and password
+#Give user choices
+puts"What would you like to do?"
+puts "[1] Display All Blogs"
+puts "[2] Search Blogs"
+puts "[3] Write a Blog"
+puts "[4] Update a Blog"
+puts "[5] Delete a Blog"
+
+choice = gets.chomp
+choice.downcase!
+
+case choice
+when
