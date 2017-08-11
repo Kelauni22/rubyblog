@@ -13,7 +13,6 @@ puts "[5] Delete a Blog"
 #get the choice from the user
 choice = gets.chomp
 
-
 #code for each choice in case statement
 case choice
   when "1"
