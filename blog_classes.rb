@@ -6,6 +6,10 @@ class Blog
    @@posts << @post #This puts the latest post instance into the posts array
   end
 
+  #def add ('new post')
+     #@@posts << 'new post'
+     #return @@posts
+  #end
 #METHODS
 #Display All Posts
 #Search All Posts
@@ -42,8 +46,31 @@ class Post < Comment
     puts @comments #Make this a method that goes through each comment
     #and displays the author, space, comment, space, dotted line
   end
-#Add
+#Add - may involve a class variable to add the new instance to the blog array
 #Update
+ def update_title=(value)
+   self.@title = value
+ end
+
+ def update_post_author=(value)
+   self.@post_author = value
+ end
+
+ def update_body=(value)
+   self.@body = value
+ end
+
+ def add_tags=(array)
+   self.tags << array #this is wrong
+ end
+
+ def del_tags=(array)
+   array.each do
+     #if statement asking if the array matches any in the tags array
+     #if it does, delete it
+     #return the new tags array
+    end
+ end
 #Delete
   end
 end

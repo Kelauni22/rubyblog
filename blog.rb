@@ -52,6 +52,7 @@ case choice
 
     #Figure out a way to put each value as arguments in a new post instance object
     #new_post = Post.new(title_input,post_author, post_body, post_tags)
+    #push this new object in to a Blogs array of posts like Blog.add(this instance)
 
     puts "Your post, #{post_title}, has been successfully posted to the Arcadia Blog!"
     puts '(SEE BELOW)'
@@ -59,6 +60,11 @@ case choice
     #new_post.display_post
 
   when "4"
+    puts "Which post would you like to update?"
+    puts "(Type the number of the corresponding blog)"
+    #display_blogs
+    choice = gets.chomp
+
     puts "What would you like to update?"
     puts "[a] The Title"
     puts "[b] The Author"
@@ -66,16 +72,16 @@ case choice
     puts "[d] The tags"
 
     selection = gets.chomp.downcase!
-
     case selection
     when "a"
       puts "Please write your new title."
       title_input = gets.chomp
-      title(title_input) #This is the title method
+      #update title method
       puts "Your title has been updated."
     when "b"
       puts "Please enter the updated author."
       post_author = gets.chomp.upcase!
+      #update author method
       puts "The author name has been updated."
     when "c"
       #How can I make the old post editable?
