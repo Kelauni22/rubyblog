@@ -1,5 +1,40 @@
 #Each time a new post is created, it will be an instance of the Post object
 
+class Blog
+  @@posts = [] #This will be an array of post instances
+  def initialize(post)
+   @@posts << @post #This puts the latest post instance into the posts array
+  end
+end
+
+#Post has title (string), author (string), body (string), collection of tags (array),
+#and comments (own class)
+class Post < Comment
+  attr_accessor :title :post_author :body :tags
+  attr_reader :comments
+  def initialize(title, post_author, body, tags, comments)
+    @title = title
+    @post_author = post_author
+    @body = body
+    @tags = tags
+    @comments = comments
+  #  @@tags = []
+  #  @@comments = [] #This will be an array of commenets instances
+    #Add each post object to the @@posts array as it's made
+    #@@posts < current post
+  end
+end
+
+#Comments have an author (string) and a comment (string)
+class Comment
+  attr_accessor :comment
+  def initialize(comment_author, comment)
+    @comment_author = comment_author
+    @comment = comment
+  end
+end
+
+=begin
 
 #Author has a name and a series of posts (own class).
 class Author
@@ -9,22 +44,4 @@ class Author
   end
 end
 
-#Post has title (string), author (string), body (string), collection of labels (array),
-#and comments (own class)
-class Post
-  def initialize(title, author, body, labels, comments)
-    @title = title
-    @author = author
-    @body = body
-    @labels = labels
-    @comments = comments
-  end
-end
-
-#Comments have an author (string) and a comment (string)
-class Comments
-  def initialize(author, comment)
-    @author = author
-    @comment = comment
-  end
-end
+=end
