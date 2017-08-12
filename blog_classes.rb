@@ -5,6 +5,10 @@ class Blog
   def initialize(post)
    @@posts << @post #This puts the latest post instance into the posts array
   end
+
+#METHODS
+#Display All Posts
+#Search All Posts
 end
 
 #Post has title (string), author (string), body (string), collection of tags (array),
@@ -22,6 +26,25 @@ class Post < Comment
   #  @@comments = [] #This will be an array of commenets instances
     #Add each post object to the @@posts array as it's made
     #@@posts < current post
+
+#METHODS
+#Display
+  def display_post #This goes in option #1 for blog.rb
+    puts @title
+    puts @post_author
+    puts ""
+    puts @body
+    puts ""
+    puts @tags #display each tag separated by a comma
+    puts ""
+    puts "COMMENTS"
+    puts ""
+    puts @comments #Make this a method that goes through each comment
+    #and displays the author, space, comment, space, dotted line
+  end
+#Add
+#Update
+#Delete
   end
 end
 
