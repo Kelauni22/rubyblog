@@ -26,7 +26,7 @@ class Post < Comment
   #  @@comments = [] #This will be an array of commenets instances
     #Add each post object to the @@posts array as it's made
     #@@posts < current post
-
+  end
 #METHODS
 #Display
   def display_post #This goes in option #1 for blog.rb

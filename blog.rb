@@ -39,7 +39,6 @@ case choice
   when "3"
     puts "Please enter a title"
     title_input = gets.chomp
-    title(title_input) #This is the title method. Why isn't it linking?
 
     puts "What is your name?"
     post_author = gets.chomp.upcase!
@@ -51,7 +50,13 @@ case choice
     tags_input = gets.chomp
     post_tags = tags_input.split(" ")
 
-    puts "Your post, #{post_title}, has been posted to the Arcadia Blog!"
+    #Figure out a way to put each value as arguments in a new post instance object
+    #new_post = Post.new(title_input,post_author, post_body, post_tags)
+
+    puts "Your post, #{post_title}, has been successfully posted to the Arcadia Blog!"
+    puts '(SEE BELOW)'
+    puts ''
+    #new_post.display_post
 
   when "4"
     puts "What would you like to update?"
