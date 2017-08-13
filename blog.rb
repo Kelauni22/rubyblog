@@ -1,6 +1,5 @@
 require 'blog_defs'
 require 'blog_classes'
-posts = {}
 
 #Give user choices
 puts"What would you like to do?"
@@ -16,9 +15,9 @@ choice = gets.chomp
 #code for each choice in case statement
 case choice
   when "1"
-    puts "Here is a list of our blog posts. Which would you like to read?"
-    puts "(Type the number of the corresponding title)"
-    #Display all blog posts (only the titles)
+    Posts.display_posts_title #Display all blog posts (only the titles)
+    puts "Above is a list of our blog posts. Pick the post you'd like to read by"
+    puts "typing its corresponding number"
     post_num_input = gets.chomp.to_i
     #Display the title, author, post, labels, and comments
     puts "Would you like to add a comment? 'Y' or 'N'"

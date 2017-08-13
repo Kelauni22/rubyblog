@@ -2,6 +2,7 @@
 #and comments (own class)
 class Post < Comment
   @@posts = []
+  @@number = 0
   attr_accessor :title :post_author :body :tags
   def initialize(title, post_author, body, tags, comments)
     @title = title
@@ -9,6 +10,7 @@ class Post < Comment
     @body = body
     @tags = tags
     @comments = comments
+    @@number += 1
   #  @@tags = []
   #  @@comments = [] #This will be an array of commenets instances
     #Add each post object to the @@posts array as it's made
@@ -59,7 +61,14 @@ class Post < Comment
 end
 
 #CLASS METHODS
+#Add to @@posts array
+  def Posts.add_to_posts_array
+    #Use .push
+  end
 #Display All Posts
+  def Posts.display_posts_title
+    @@posts.each {|x| print "[#{x[:number]}]", x[:title], ", "}
+  end
 #Search All Posts
 
 #Comments have an author (string) and a comment (string)
