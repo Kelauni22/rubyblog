@@ -27,4 +27,31 @@ class Example
   end
 end
 
-Example.display_full_post(1)
+
+class Comment
+  attr_accessor :comment
+  def initialize(comment_author, comment)
+    @comment_author = comment_author
+    @comment = comment
+    @@comments = []
+  end
+
+  def Comment.add_com_to_comments(new_comment)
+    @@comments << new_comment
+  end
+end
+
+
+def new_comment
+  puts "What is your name?"
+  comment_author = gets.chomp.upcase
+  puts "Write your comment and then press enter."
+  comment = gets.chomp.capitalize!
+  puts "Your comment has been posted. Thank you!"
+
+  new_comment = Comment.new(comment_author,comment)
+  return new_comment
+end
+
+Comment.add_comment_to_comments(new_comment)
+print @@comments

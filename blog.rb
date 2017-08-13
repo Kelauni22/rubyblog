@@ -15,26 +15,34 @@ choice = gets.chomp
 #code for each choice in case statement
 case choice
   when "1"
-    Posts.display_posts_by_title #Display all blog posts (only the titles)
+    Post.display_posts_by_title #Display all blog posts (only the titles)
     puts "Above is a list of our blog posts. Pick the post you'd like to read by"
-    puts "typing its corresponding number"
+    puts "typing its corresponding number."
     post_num_input = gets.chomp.to_i
-    Posts.display_full_post#Display the title, author, post, labels, and comments
+    Post.display_full_post #Display the title, author, post, tags, and comments
     puts "Would you like to add a comment? 'Y' or 'N'"
     y_or_n = gets.chomp.upcase
     case y_or_n
     when "Y"
-      puts "What is your name?"
-      comment_name = gets.chomp.upcase
-      puts "Write your comment and then press enter."
-      post_comment = gets.chomp.capitalize!
-      puts "Your comment has been posted. Thank you!"
+      add_comment()
     when "N"
       break
     else puts "That is not a correct input."
 
   when "2"
-    #Figure out searching in Ruby
+    puts "Would you like to search the Arcadia Blog by Title ('t'), Author ('a'), Tag ('g') or Text ('x')?"
+    pick = gets.chomp.downcase
+    case pick
+    when 't'
+      search_by_title() #make this!
+    when 'a'
+      search_by_author() #make this!
+    when 'g'
+      search_by_tag() #make this!
+    when 'x'
+      search_by_text() #make this!
+    else puts 'That is not an option. Try again.'
+      
   when "3"
     puts "Please enter a title"
     title_input = gets.chomp
