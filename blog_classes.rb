@@ -1,25 +1,8 @@
-#Each time a new post is created, it will be an instance of the Post object
-
-class Blog
-  @@posts = [] #This will be an array of post instances
-  def initialize(post)
-   @@posts << @post #This puts the latest post instance into the posts array
-  end
-
-  #def add ('new post')
-     #@@posts << 'new post'
-     #return @@posts
-  #end
-#METHODS
-#Display All Posts
-#Search All Posts
-end
-
 #Post has title (string), author (string), body (string), collection of tags (array),
 #and comments (own class)
 class Post < Comment
+  @@posts = []
   attr_accessor :title :post_author :body :tags
-  attr_reader :comments
   def initialize(title, post_author, body, tags, comments)
     @title = title
     @post_author = post_author
@@ -32,7 +15,7 @@ class Post < Comment
     #@@posts < current post
   end
 #METHODS
-#Display
+#display_post
   def display_post #This goes in option #1 for blog.rb
     puts @title
     puts @post_author
@@ -46,8 +29,8 @@ class Post < Comment
     puts @comments #Make this a method that goes through each comment
     #and displays the author, space, comment, space, dotted line
   end
-#Add - may involve a class variable to add the new instance to the blog array
-#Update
+#Add_post - may involve a class variable to add the new instance to the blog array
+#Update_post
  def update_title=(value)
    self.@title = value
  end
@@ -71,9 +54,13 @@ class Post < Comment
      #return the new tags array
     end
  end
-#Delete
-  end
+#Delete_post
+
 end
+
+#CLASS METHODS
+#Display All Posts
+#Search All Posts
 
 #Comments have an author (string) and a comment (string)
 class Comment
@@ -83,15 +70,3 @@ class Comment
     @comment = comment
   end
 end
-
-=begin
-
-#Author has a name and a series of posts (own class).
-class Author
-  def initialize(name, post)
-    @name = name
-    @post = post
-  end
-end
-
-=end
