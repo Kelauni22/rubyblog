@@ -1,11 +1,13 @@
 require_relative 'blog_defs'
 require_relative 'blog_classes'
+require_relative 'blog_array'
 
+#Variables
+error = "That is not an option. Try again"
 #Go back through and do all single quotes
 #My entire blog array
-blog = []
-error = "That is not an option. Try again"
-
+blog.each {|x| puts x}
+=begin
 #Give user choices
 puts ''
 puts"What would you like to do?"
@@ -18,7 +20,7 @@ puts ''
 
 #get the choice from the user
 choice = gets.chomp
-=begin
+
 #code for each choice in case statement
 case choice
 when "1" #INCOMPLETE
