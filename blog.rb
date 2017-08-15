@@ -1,10 +1,7 @@
 require_relative 'blog_defs'
 require_relative 'blog_classes'
 
-test = Post.new("hey","me","wassup girl!",["tag1","tag2","tag3"])
-puts test.title
-
-
+test
 
 =begin
 #Go back through and do all single quotes
