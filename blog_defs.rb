@@ -22,10 +22,22 @@ def display_full_post(post_num_input)
 end
 
 #add a comment to the current blog post in option #1 in main program
-def add_comment
+def comment_fun
   case y_or_n
   when 'y'
-    add_comment() #Make This!
+    puts "Would you like to..."
+    puts "[1] add a comment"
+    puts "[2] delete a comment"
+    puts "[3] update a comment"
+    choice = gets.chomp
+    case choice
+    when "1"
+      add_comment()
+    when "2"
+      delete_comment()
+    when "3"
+      update_comment()
+    else puts error
   when 'n'
     break
   else puts error

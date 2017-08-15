@@ -24,9 +24,9 @@ when "1" #INCOMPLETE
   puts "typing its corresponding number."
   post_num_input = gets.chomp.to_i
   display_full_post(post_num_input)
-  puts 'Would you like to add a comment to this post?'
+  puts 'Would you like to add, update, or delete a comment on this post?'
   y_or_n = gets.chomp.downcase
-  add_comment(y_or_n) #Finish this in blog_defs.rb
+  comment_fun(y_or_n) #Finish this in blog_defs.rb
 
 when "2" #COMPLETE
   puts "Would you like to search the Arcadia Blog by Title ('t'), Author ('a'), Tag ('g') or Text ('x')?"
