@@ -1,5 +1,8 @@
-require 'blog_defs'
-require 'blog_classes'
+require_relative 'blog_defs'
+require_relative 'blog_classes'
+
+test = Post.new("hey","me","wassup girl!",["tag1","tag2","tag3"])
+puts test.title
 
 
 
@@ -113,3 +116,4 @@ when "5" #COMPLETE
 else
   puts error
   #reloop here
+=end
