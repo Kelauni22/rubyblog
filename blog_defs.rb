@@ -1,3 +1,8 @@
+def test
+  print "It works!"
+end
+
+=begin
 error = "That is not an option. Try again"
 #method to display all blog posts when option #1 in main program is chosen
 def display_posts_by_title #Display all blog posts (only the titles)
@@ -41,6 +46,54 @@ def comment_fun
   when 'n'
     break
   else puts error
+end
+
+#post_num_input
+#add a comment to a post
+def add_comment
+  puts "Type in a username with no spaces."
+  username = gets.chomp.downcase!
+  puts "Type your comment"
+  comment = gets.chomp
+  blog[post_num_input].comments << Comments.new(username,comment)
+  puts "Thank you #{username}! Your comment has been added to" +
+  "\"#{blog[post_num_input.title]}\"!"
+end
+
+#delete a comment from a post
+def delete_comment
+  blog[post_num_input].comments.each do |x|
+    puts  "[#{blog[post_num_input].comments.index(x) + 1}] #{x[:comment]}"
+  end
+  puts ''
+  puts "Which comment would you like to delete? (Type the corresponding number)."
+  number = gets.chomp.to_i
+  array_number = number - 1
+  blog[post_num_input].comments.delete_at(array_number)
+  puts "Comment number #{number} has been deleted."
+  blog[post_num_input].comments.each {|x| puts x}
+end
+
+#update a comment in a post
+def update_comment
+  puts "WARNING: This will erase your entire previous comment text."
+  puts "Would you still like to update it? 'y' or 'n'"
+  if 'n' then break
+  if 'y'
+    blog[post_num_input].comments.each do |x|
+    puts  "[#{blog[post_num_input].comments.index(x) + 1}] #{x[:comment]}"
+  end
+  puts ''
+  puts "Which comment would you like to update? (Type the corresponding number)"
+  comment_choice = gets.chomp.to_i
+  array_number = comment_choice - 1
+  puts "Type in your username with no spaces."
+  username = gets.chomp.downcase
+  puts "Go ahead a write an updated comment."
+  updated_comment = gets.chomp
+  blog[post_num_input].comments[array_number].comment_author = username
+  blog[post_num_input].comments[array_number].comment = updated_comment
+  puts "Your comment has been updated!"
 end
 
 #adding a new post in option #3 in main program

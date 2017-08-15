@@ -1,5 +1,9 @@
 require 'blog_defs'
 require 'blog_classes'
+
+
+
+=begin
 #Go back through and do all single quotes
 #My entire blog array
 blog = []
@@ -22,7 +26,7 @@ when "1" #INCOMPLETE
   display_posts_by_title
   puts "Above is a list of our blog posts. Pick the post you'd like to read by"
   puts "typing its corresponding number."
-  post_num_input = gets.chomp.to_i
+  post_num_input = gets.chomp.to_i - 1
   display_full_post(post_num_input)
   puts 'Would you like to add, update, or delete a comment on this post?'
   y_or_n = gets.chomp.downcase
