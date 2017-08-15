@@ -1,25 +1,24 @@
 require_relative 'blog_defs'
 require_relative 'blog_classes'
 
-test
-
-=begin
 #Go back through and do all single quotes
 #My entire blog array
 blog = []
 error = "That is not an option. Try again"
 
 #Give user choices
+puts ''
 puts"What would you like to do?"
 puts "[1] Read Blogs"
 puts "[2] Search Blogs"
 puts "[3] Write a Blog"
 puts "[4] Update a Blog"
 puts "[5] Delete a Blog"
+puts ''
 
 #get the choice from the user
 choice = gets.chomp
-
+=begin
 #code for each choice in case statement
 case choice
 when "1" #INCOMPLETE
