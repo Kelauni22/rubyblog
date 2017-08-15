@@ -34,7 +34,7 @@ end
 def add_post
   puts "Please enter a title"
   title_input = gets.chomp
-  final_title = title(title_input)
+  final_title = title(title_input) #title helper method
 
   puts "What is your name?"
   post_author = gets.chomp.upcase!
@@ -54,7 +54,7 @@ def add_post
   puts blog[blog.length-1].display_post #Can I do this?
 end
 
-
+#A helper method to make the title of the blog look like a normal title.
 def title(title_input)
   words_no_cap = ["and", "or", "the", "over", "to", "the", "a", "but"]
   post_title = title_input.split(" ").map {|word|
@@ -63,7 +63,7 @@ def title(title_input)
       else
           word.capitalize!
       end
-  }.join(" ") 
+  }.join(" ")
   post_title[0].capitalize!
   return post_title
 end
