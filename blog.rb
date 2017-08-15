@@ -1,15 +1,14 @@
 #require_relative 'blog_defs'
 #Srequire_relative 'blog_classes'
 require_relative 'blog_array'
-include BLOG
+include BLOG_ARRAY
 
 #Variables
 error = "That is not an option. Try again"
 #Go back through and do all single quotes
 #My entire blog array
-puts BLOG::BLOG_ENTRIES
-blog.each {|x| puts x}
-puts error
+puts BLOG[1]
+
 =begin
 #Give user choices
 puts ''

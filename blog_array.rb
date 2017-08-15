@@ -1,7 +1,6 @@
-puts "hey"
-
-module BLOG
-    BLOG_ENTRIES= [{title: "Sunrise",
+module BLOG_ARRAY
+    BLOG= [{
+        title: "Sunrise",
         author: "Kelauni",
         body: "Because the sun came up and flowers are blooming",
         tags: ["sun","earth","happy","love","romance"],
