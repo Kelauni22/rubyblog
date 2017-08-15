@@ -67,3 +67,16 @@ def title(title_input)
   post_title[0].capitalize!
   return post_title
 end
+
+#method to delete tags from a post while updating tags in option #4 in the main program
+def delete_tags(tags_input)
+  tags_to_delete = tags_input.split(" ")
+  blog[choice-1].tags.each do |x|
+    tags_to_delete.each do |y|
+      if x == y
+        blog[choice-1].tags -= x
+      end
+    end
+  end
+  return blog[choice-1].tags
+end

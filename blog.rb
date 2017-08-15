@@ -81,11 +81,15 @@ when '4'
 
     case tag_choice
     when "d"
-      puts "type the tag(s) you'd like to delete. Leave a space between each one."
-      #Create a loop in a loop that checks to see if each word is there and if it is, delete it from the tags array.
+      puts "Type the tag(s) you'd like to delete. Leave a space between each one."
+      tags_input = gets.chomp
+      delete_tags(tags_input)
     when "a"
       puts "Type the tag(s) you'd like to add. Leave a space between each one."
-      #Parse the string into an array and add each new tag to the existing tag array.
+      tags_input = gets.chomp
+      def add_tags
+        
+      end
     else
       puts "Sorry, that is not a choice."
   else puts "That is not an option. Try again."
