@@ -42,7 +42,7 @@ when "2" #INCOMPLETE
     search_by_text() #make this!
   else puts error
 
-when '3'
+when '3' #COMPLETE
   add_post
 
 when '4'
@@ -77,7 +77,13 @@ when '4'
     blog[choice-1].post_author = post_author
     puts "The author name has been updated to #{post_author}."
   when "c"
-    #How can I make the old post editable?
+    puts "WARNING: This will erase your entire previous blog text."
+    puts "Would you still like to update it? 'y' or 'n'"
+    if 'n' then break
+    if 'y' then puts "Enter your new body text."
+    update_body = gets.chomp
+    blog[choice-1].body = update_body
+    puts "The body of your blog post has been updated!"
   when "d"
     puts "Would you like to delete a tag(s) or add a tag(s)?"
     puts "To delete, type 'd' to add type 'a'"
@@ -96,13 +102,12 @@ when '4'
       puts error
   else puts error
 
-when "5"
-  puts "Here is a list of every blog title."
-  #display all title of every blog post
-  puts "Which number would you like to delete?"
+when "5" #COMPLETE
+  display_posts_by_title
+  puts ''
+  puts "Which post number would you like to delete?"
   title_num_input = gets.chomp.to_i
-  #delete that title
-  puts "Title ##{title_num_input} has been deleted." #Maybe instead, display the actual title.
+  delete_post(title_num_input)
 else
   puts error
   #reloop here

@@ -81,9 +81,18 @@ def delete_tags(tags_input)
   end
 end
 
+#method to add tags to existing post when updating tags in option #4 of main program
 def add_tags(tags_input)
   tags_to_add = tags_input.split(" ")
   tags_to_add.each do |x|
     blogs[choice-1].tags << x
   end
+end
+
+#method to delete a post from blog for option #5 of main program
+def delete_post(title_num_input)
+  to_delete = title_num_input - 1
+  blog.delete_at(to_delete)
+  return blog
+  puts "Title #{blog[to_delete]} has been deleted."
 end
