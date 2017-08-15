@@ -3,6 +3,7 @@ require 'blog_classes'
 #Go back through and do all single quotes
 #My entire blog array
 blog = []
+error = "That is not an option. Try again"
 
 #Give user choices
 puts"What would you like to do?"
@@ -39,7 +40,7 @@ when "2" #INCOMPLETE
     search_by_tag() #make this!
   when 'x'
     search_by_text() #make this!
-  else puts 'That is not an option. Try again.'
+  else puts error
 
 when '3'
   add_post
@@ -51,6 +52,9 @@ when '4'
   puts '(Type the number of the corresponding blog)'
   puts ''
   choice = gets.chomp.to_i
+  if choice > blogs.length
+    puts error
+  end
   display_full_post(choice - 1)
   puts ''
   puts 'What would you like to update?'
@@ -87,12 +91,10 @@ when '4'
     when "a"
       puts "Type the tag(s) you'd like to add. Leave a space between each one."
       tags_input = gets.chomp
-      def add_tags
-        
-      end
+      add_tags(tags_input)
     else
-      puts "Sorry, that is not a choice."
-  else puts "That is not an option. Try again."
+      puts error
+  else puts error
 
 when "5"
   puts "Here is a list of every blog title."
@@ -102,5 +104,5 @@ when "5"
   #delete that title
   puts "Title ##{title_num_input} has been deleted." #Maybe instead, display the actual title.
 else
-  puts "Your input is not an option."
+  puts error
   #reloop here

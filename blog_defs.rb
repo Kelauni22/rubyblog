@@ -1,3 +1,4 @@
+error = "That is not an option. Try again"
 #method to display all blog posts when option #1 in main program is chosen
 def display_posts_by_title #Display all blog posts (only the titles)
   blog.each {|x| print "[#{blog.index(x) + 1}]", x[:title], ", "}
@@ -27,7 +28,7 @@ def add_comment
     add_comment() #Make This!
   when 'n'
     break
-  else puts "That is not a correct input."
+  else puts error
 end
 
 #adding a new post in option #3 in main program
@@ -78,5 +79,11 @@ def delete_tags(tags_input)
       end
     end
   end
-  return blog[choice-1].tags
+end
+
+def add_tags(tags_input)
+  tags_to_add = tags_input.split(" ")
+  tags_to_add.each do |x|
+    blogs[choice-1].tags << x
+  end
 end
