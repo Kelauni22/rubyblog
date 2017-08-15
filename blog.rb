@@ -1,5 +1,8 @@
 require 'blog_defs'
 require 'blog_classes'
+#Go back through and do all single quotes
+#My entire blog array
+blog = []
 
 #Give user choices
 puts"What would you like to do?"
@@ -15,13 +18,14 @@ choice = gets.chomp
 #code for each choice in case statement
 case choice
   when "1"
-    Post.display_posts_by_title #Display all blog posts (only the titles)
+    display_posts_by_title
     puts "Above is a list of our blog posts. Pick the post you'd like to read by"
     puts "typing its corresponding number."
     post_num_input = gets.chomp.to_i
-    Post.display_full_post #Display the title, author, post, tags, and comments
-    puts "Would you like to add a comment? 'Y' or 'N'"
+  
+    display_full_post(post_num_input)
     y_or_n = gets.chomp.upcase
+    puts 'Would you like to add a comment to this post?'
     case y_or_n
     when "Y"
       add_comment()
@@ -42,8 +46,9 @@ case choice
     when 'x'
       search_by_text() #make this!
     else puts 'That is not an option. Try again.'
-      
+
   when "3"
+
     puts "Please enter a title"
     title_input = gets.chomp
 
@@ -57,14 +62,12 @@ case choice
     tags_input = gets.chomp
     post_tags = tags_input.split(" ")
 
-    #Figure out a way to put each value as arguments in a new post instance object
-    #new_post = Post.new(title_input,post_author, post_body, post_tags)
-    #push this new object in to a Blogs array of posts like Blog.add(this instance)
+    blog << Post.new(title_input, post_author, post_body, post_tags)
 
-    puts "Your post, #{post_title}, has been successfully posted to the Arcadia Blog!"
+    puts "Your post, #{title_input}, has been successfully posted to the Arcadia Blog!"
     puts '(SEE BELOW)'
     puts ''
-    #new_post.display_post
+    puts blog[blog.length-1].display_post #Can I do this?
 
   when "4"
     puts "Which post would you like to update?"
