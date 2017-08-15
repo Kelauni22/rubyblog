@@ -20,6 +20,40 @@ def display_full_post(post_num_input)
   end
 end
 
+#add a comment to the current blog post in option #1 in main program
+def add_comment
+  case y_or_n
+  when 'y'
+    add_comment() #Make This!
+  when 'n'
+    break
+  else puts "That is not a correct input."
+end
+
+#adding a new post in option #3 in main program
+def add_post
+  puts "Please enter a title"
+  title_input = gets.chomp
+  final_title = title(title_input)
+
+  puts "What is your name?"
+  post_author = gets.chomp.upcase!
+
+  puts "Write your post. When finished, press enter."
+  post_body = gets.chomp
+
+  puts "List any tags for your post. Separate each with a space."
+  tags_input = gets.chomp
+  post_tags = tags_input.split(" ")
+
+  blog << Post.new(final_title, post_author, post_body, post_tags)
+
+  puts "Your post, #{final_title}, has been successfully posted to the Arcadia Blog!"
+  puts '(SEE BELOW)'
+  puts ''
+  puts blog[blog.length-1].display_post #Can I do this?
+end
+
 
 def title(title_input)
   words_no_cap = ["and", "or", "the", "over", "to", "the", "a", "but"]
@@ -29,7 +63,7 @@ def title(title_input)
       else
           word.capitalize!
       end
-  }.join(" ") # I replaced the "end" in "end.join(" ") with "}" because it wasn't working in Ruby 2.1.1
+  }.join(" ") 
   post_title[0].capitalize!
-  #Store this title somewhere
+  return post_title
 end

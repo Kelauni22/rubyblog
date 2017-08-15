@@ -17,23 +17,17 @@ choice = gets.chomp
 
 #code for each choice in case statement
 case choice
-  when "1"
+  when "1" #INCOMPLETE
     display_posts_by_title
     puts "Above is a list of our blog posts. Pick the post you'd like to read by"
     puts "typing its corresponding number."
     post_num_input = gets.chomp.to_i
-  
     display_full_post(post_num_input)
-    y_or_n = gets.chomp.upcase
     puts 'Would you like to add a comment to this post?'
-    case y_or_n
-    when "Y"
-      add_comment()
-    when "N"
-      break
-    else puts "That is not a correct input."
+    y_or_n = gets.chomp.downcase
+    add_comment(y_or_n) #Finish this in blog_defs.rb
 
-  when "2"
+  when "2" #INCOMPLETE
     puts "Would you like to search the Arcadia Blog by Title ('t'), Author ('a'), Tag ('g') or Text ('x')?"
     pick = gets.chomp.downcase
     case pick
@@ -48,26 +42,7 @@ case choice
     else puts 'That is not an option. Try again.'
 
   when "3"
-
-    puts "Please enter a title"
-    title_input = gets.chomp
-
-    puts "What is your name?"
-    post_author = gets.chomp.upcase!
-
-    puts "Write your post. When finished, press enter."
-    post_body = gets.chomp
-
-    puts "List any tags for your post. Separate each with a space."
-    tags_input = gets.chomp
-    post_tags = tags_input.split(" ")
-
-    blog << Post.new(title_input, post_author, post_body, post_tags)
-
-    puts "Your post, #{title_input}, has been successfully posted to the Arcadia Blog!"
-    puts '(SEE BELOW)'
-    puts ''
-    puts blog[blog.length-1].display_post #Can I do this?
+   add_post
 
   when "4"
     puts "Which post would you like to update?"
