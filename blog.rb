@@ -28,24 +28,23 @@ when "1" #INCOMPLETE
   y_or_n = gets.chomp.downcase
   add_comment(y_or_n) #Finish this in blog_defs.rb
 
-when "2" #INCOMPLETE
+when "2" #COMPLETE
   puts "Would you like to search the Arcadia Blog by Title ('t'), Author ('a'), Tag ('g') or Text ('x')?"
   pick = gets.chomp.downcase
   case pick
   when 't'
-    search_by_title() #make this!
+    search_by_title()
   when 'a'
-    search_by_author() #make this!
+    search_by_author()
   when 'g'
-    search_by_tag() #make this!
+    search_by_tags()
   when 'x'
-    search_by_text() #make this!
+   search_by_text()
   else puts error
-
 when '3' #COMPLETE
   add_post
 
-when '4'
+when '4' #COMPLETE
   display_posts_by_title
   puts ''
   puts 'Which post would you like to update?'
@@ -88,7 +87,6 @@ when '4'
     puts "Would you like to delete a tag(s) or add a tag(s)?"
     puts "To delete, type 'd' to add type 'a'"
     tag_choice = gets.chomp
-
     case tag_choice
     when "d"
       puts "Type the tag(s) you'd like to delete. Leave a space between each one."

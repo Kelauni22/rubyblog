@@ -96,3 +96,39 @@ def delete_post(title_num_input)
   return blog
   puts "Title #{blog[to_delete]} has been deleted."
 end
+
+#All Searching Methods for Option #2 in main program
+#Search by title
+def search_by_title
+  puts "Type in all or part of the title you'd like to find."
+  input = gets.chomp.downcase
+  blog.each {|x| x.title.grep(/^#{input}/)} #can I do this?
+end
+#Search by author
+def search_by_author
+  puts "Type in all or part of the author's name to display all of his/her posts."
+  input = gets.chomp.downcase
+  blog.each {|x| x.post_author.grep(/^#{input}/)}
+end
+#Search by tags
+def search_by_tags
+  puts "Type in one or more tags to find posts. (Separate each by a space.)"
+  input = gets.chomp.downcase
+  input_array = input.split(" ")
+  blog.each do |x|
+    input_array.each do |y|
+      if x.tags.select {|s| s.include? y} #Do I have to return something here to display the post(s)
+    end
+  end
+end
+#Search by text
+def search_by_text
+  puts "Type in one or more words to find corresponding posts. (Separate each by a space.)"
+  input = gets.chomp.downcase
+  input_array = input.split(" ")
+  blog.each do |x|
+    input_array.each do |y|
+      if x.body.select {|s| s.include? y} #Do I have to return something here to display the post(s)
+    end
+  end
+end
