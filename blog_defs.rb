@@ -5,7 +5,7 @@ module BLOG_DEFS
   def show_comments(post_num_input)
     puts ''
     puts '----COMMENTS----'
-    BLOG[post_num_input][:comments].each do |x|
+    BLOG[post_num_input].comments.each do |x|
       x.each_value {|y| puts y}
     end
     puts ''
@@ -13,8 +13,8 @@ module BLOG_DEFS
   #A helper method to display comments by number for user to choose from
   def numbered_comments(post_num_input)
     puts ''
-    BLOG[post_num_input][:comments].each do |x|
-      puts  "[#{BLOG[post_num_input][:comments].index(x) + 1}] #{x[:username]} - #{x[:comment]}"
+    BLOG[post_num_input].comments.each do |x|
+      puts  "[#{BLOG[post_num_input].comments.index(x) + 1}] #{x.username} - #{x.comment}"
     end
     puts ''
   end
@@ -69,7 +69,8 @@ module BLOG_DEFS
     comment = gets.chomp
     BLOG[post_num_input].comments << Comment.new(username,comment)
     puts "Thank you #{username}! Your comment has been added to " +
-    "\"#{BLOG[post_num_input][:title]}\"!"
+    "\"#{BLOG[post_num_input].title}\"!"
+    show_comments(post_num_input)
   end
 =begin
   #delete a comment from a post
