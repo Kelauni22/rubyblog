@@ -47,7 +47,7 @@ module BLOG_DEFS
       break
     else puts error
   end
-=end
+
 
   #add a comment to a post
   def add_comment(post_num_input)
@@ -59,21 +59,29 @@ module BLOG_DEFS
     puts "Thank you #{username}! Your comment has been added to " +
     "\"#{BLOG[post_num_input][:title]}\"!"
   end
-=begin
+=end
+
   #delete a comment from a post
-  def delete_comment
-    blog[post_num_input].comments.each do |x|
-      puts  "[#{blog[post_num_input].comments.index(x) + 1}] #{x[:comment]}"
+  def delete_comment(post_num_input)
+    puts ''
+    BLOG[post_num_input][:comments].each do |x|
+      puts  "[#{BLOG[post_num_input][:comments].index(x) + 1}] #{x[:username]} - #{x[:comment]}"
     end
     puts ''
     puts "Which comment would you like to delete? (Type the corresponding number)."
     number = gets.chomp.to_i
     array_number = number - 1
-    blog[post_num_input].comments.delete_at(array_number)
+    BLOG[post_num_input][:comments].delete_at(array_number)
+    puts ''
     puts "Comment number #{number} has been deleted."
-    blog[post_num_input].comments.each {|x| puts x}
+    puts ''
+    puts '----COMMENTS----'
+    BLOG[post_num_input][:comments].each do |x|
+      x.each_value {|y| puts y + "\n"}
+    end
+    puts ''
   end
-
+=begin
   #update a comment in a post
   def update_comment
     puts "WARNING: This will erase your entire previous comment text."
