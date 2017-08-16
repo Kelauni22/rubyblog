@@ -6,7 +6,7 @@ module BLOG_DEFS
     puts ''
     puts '----COMMENTS----'
     BLOG[post_num_input].comments.each do |x|
-      x.each_value {|y| puts y}
+      puts x.username + "\n" + x.comment
     end
     puts ''
   end
