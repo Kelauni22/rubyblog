@@ -2,12 +2,12 @@
 #(array), and comments (array with class Comment instance objects)
 class Post
   attr_accessor :title, :author, :body, :tags, :comments
-  def initialize(title, author, body, tags)
+  def initialize(title, author, body, tags, comments)
     @title = title
     @author = author
     @body = body
     @tags = tags   #This will come in as an array
-    @comments = [] #Holds instances of class Comments
+    @comments = [] #Holds instances of class Comment
   end
 end
 

@@ -59,7 +59,7 @@ module BLOG_DEFS
       break
     else puts error
   end
-
+=end
 
   #add a comment to a post
   def add_comment(post_num_input)
@@ -67,11 +67,11 @@ module BLOG_DEFS
     username = gets.chomp
     puts "Type your comment"
     comment = gets.chomp
-    BLOG[post_num_input][:comments] << Comment.new(username,comment)
+    BLOG[post_num_input].comments << Comment.new(username,comment)
     puts "Thank you #{username}! Your comment has been added to " +
     "\"#{BLOG[post_num_input][:title]}\"!"
   end
-
+=begin
   #delete a comment from a post
   def delete_comment(post_num_input)
     numbered_comments(post_num_input)
@@ -83,7 +83,6 @@ module BLOG_DEFS
     puts "Comment number #{number} has been deleted."
     show_comments(post_num_input)
   end
-=end
 
   #update a comment in a post
   def update_comment(post_num_input)
