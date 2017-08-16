@@ -1,15 +1,15 @@
-#require_relative 'blog_defs'
-#Srequire_relative 'blog_classes'
+#Go back through and fix quotes
+require_relative 'blog_defs'
+require_relative 'blog_classes'
 require_relative 'blog_array'
 include BLOG_ARRAY
+include BLOG_DEFS
 
+display_posts_by_title
+=begin
 #Variables
 error = "That is not an option. Try again"
-#Go back through and do all single quotes
-#My entire blog array
-puts BLOG[1]
 
-=begin
 #Give user choices
 puts ''
 puts"What would you like to do?"
@@ -34,6 +34,7 @@ when "1" #INCOMPLETE
   puts 'Would you like to add, update, or delete a comment on this post?'
   y_or_n = gets.chomp.downcase
   comment_fun(y_or_n) #Finish this in blog_defs.rb
+
 
 when "2" #COMPLETE
   puts "Would you like to search the Arcadia Blog by Title ('t'), Author ('a'), Tag ('g') or Text ('x')?"
