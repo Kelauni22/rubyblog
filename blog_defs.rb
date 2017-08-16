@@ -6,7 +6,7 @@ module BLOG_DEFS
   def display_posts_by_title #Display all blog posts (only the titles)
     BLOG.each {|x| print "[#{BLOG.index(x) + 1}]", x[:title], ", "}
   end
-=end
+
   #method to display the post chosen by the user (option #1)
   def display_full_post(post_num_input)
     puts ''
@@ -25,8 +25,6 @@ module BLOG_DEFS
     end
     puts ''
   end
-
-=begin
 
   #add a comment to the current blog post in option #1 in main program
   def comment_fun
@@ -49,19 +47,19 @@ module BLOG_DEFS
       break
     else puts error
   end
+=end
 
-  #post_num_input
   #add a comment to a post
-  def add_comment
+  def add_comment(post_num_input)
     puts "Type in a username with no spaces."
-    username = gets.chomp.downcase!
+    username = gets.chomp
     puts "Type your comment"
     comment = gets.chomp
-    blog[post_num_input].comments << Comments.new(username,comment)
-    puts "Thank you #{username}! Your comment has been added to" +
-    "\"#{blog[post_num_input.title]}\"!"
+    BLOG[post_num_input][:comments] << Comment.new(username,comment)
+    puts "Thank you #{username}! Your comment has been added to " +
+    "\"#{BLOG[post_num_input][:title]}\"!"
   end
-
+=begin
   #delete a comment from a post
   def delete_comment
     blog[post_num_input].comments.each do |x|

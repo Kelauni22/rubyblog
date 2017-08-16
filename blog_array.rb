@@ -14,7 +14,7 @@ module BLOG_ARRAY
      body: "Because the sun went down and I'm sleepy",
      tags: ["moon","night","sleep","divorce","danger","romance"],
      comments:[{username: "lovely_kitty",
-                comment: "Awww! The nighttime also make me cry. I can relate."},
+                comment: "Awww! The nighttime also makes me cry. I can relate."},
                {username: "forgetful_kitty",
                 comment: "I can't remember how to feel about this story...."}
               ]},
