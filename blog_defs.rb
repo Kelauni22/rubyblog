@@ -1,28 +1,32 @@
 error = "That is not an option. Try again"
 
 module BLOG_DEFS
-  #method to display all blog posts when option #1 in main program is chosen
+=begin
+  #method to display all blog posts (option #1)
   def display_posts_by_title #Display all blog posts (only the titles)
     BLOG.each {|x| print "[#{BLOG.index(x) + 1}]", x[:title], ", "}
   end
+=end
+  #method to display the post chosen by the user (option #1)
+  def display_full_post(post_num_input)
+    puts ''
+    puts BLOG[post_num_input][:title]
+    puts "by " + BLOG[post_num_input][:author]
+    puts ''
+    puts BLOG[post_num_input][:body]
+    puts ''
+    puts '----TAGS----'
+    BLOG[post_num_input][:tags].each{|x| print x," "}
+    puts ''
+    puts ''
+    puts '----COMMENTS----'
+    BLOG[post_num_input][:comments].each do |x|
+      x.each_value {|y| puts y + "\n"}
+    end
+    puts ''
+  end
 
 =begin
-  #method to display the post chosen by the user in option #1 in main program
-  def display_full_post(post_num_input)
-    blog.each do |x|
-      if post_num_input == blog[post_num_input - 1]
-        puts x[:title]
-        puts x[:author]
-        puts ''
-        puts x[:body]
-        puts ''
-        puts x[:tags]
-        puts ''
-        puts 'COMMENTS'
-        puts x[:comments]
-      end
-    end
-  end
 
   #add a comment to the current blog post in option #1 in main program
   def comment_fun

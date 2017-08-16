@@ -5,7 +5,7 @@ require_relative 'blog_array'
 include BLOG_ARRAY
 include BLOG_DEFS
 
-display_posts_by_title
+display_full_post(0)
 =begin
 #Variables
 error = "That is not an option. Try again"
@@ -27,6 +27,7 @@ choice = gets.chomp
 case choice
 when "1" #INCOMPLETE
   display_posts_by_title
+  puts ''
   puts "Above is a list of our blog posts. Pick the post you'd like to read by"
   puts "typing its corresponding number."
   post_num_input = gets.chomp.to_i - 1
