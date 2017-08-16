@@ -1,6 +1,23 @@
-error = "That is not an option. Try again"
-
 module BLOG_DEFS
+  #Variables
+  #error = "That is not an option. Try again"
+  #A helper method to display all comments in a post after it's been changed
+  def show_comments(post_num_input)
+    puts ''
+    puts '----COMMENTS----'
+    BLOG[post_num_input][:comments].each do |x|
+      x.each_value {|y| puts y}
+    end
+    puts ''
+  end
+  #A helper method to display comments by number for user to choose from
+  def numbered_comments(post_num_input)
+    puts ''
+    BLOG[post_num_input][:comments].each do |x|
+      puts  "[#{BLOG[post_num_input][:comments].index(x) + 1}] #{x[:username]} - #{x[:comment]}"
+    end
+    puts ''
+  end
 =begin
   #method to display all blog posts (option #1)
   def display_posts_by_title #Display all blog posts (only the titles)
@@ -18,12 +35,7 @@ module BLOG_DEFS
     puts '----TAGS----'
     BLOG[post_num_input][:tags].each{|x| print x," "}
     puts ''
-    puts ''
-    puts '----COMMENTS----'
-    BLOG[post_num_input][:comments].each do |x|
-      x.each_value {|y| puts y + "\n"}
-    end
-    puts ''
+    show_comments(post_num_input)
   end
 
   #add a comment to the current blog post in option #1 in main program
@@ -51,7 +63,7 @@ module BLOG_DEFS
 
   #add a comment to a post
   def add_comment(post_num_input)
-    puts "Type in a username with no spaces."
+    puts "Type in a username."
     username = gets.chomp
     puts "Type your comment"
     comment = gets.chomp
@@ -59,51 +71,48 @@ module BLOG_DEFS
     puts "Thank you #{username}! Your comment has been added to " +
     "\"#{BLOG[post_num_input][:title]}\"!"
   end
-=end
 
   #delete a comment from a post
   def delete_comment(post_num_input)
-    puts ''
-    BLOG[post_num_input][:comments].each do |x|
-      puts  "[#{BLOG[post_num_input][:comments].index(x) + 1}] #{x[:username]} - #{x[:comment]}"
-    end
-    puts ''
+    numbered_comments(post_num_input)
     puts "Which comment would you like to delete? (Type the corresponding number)."
     number = gets.chomp.to_i
     array_number = number - 1
     BLOG[post_num_input][:comments].delete_at(array_number)
     puts ''
     puts "Comment number #{number} has been deleted."
-    puts ''
-    puts '----COMMENTS----'
-    BLOG[post_num_input][:comments].each do |x|
-      x.each_value {|y| puts y + "\n"}
-    end
-    puts ''
+    show_comments(post_num_input)
   end
-=begin
+=end
+
   #update a comment in a post
-  def update_comment
+  def update_comment(post_num_input)
     puts "WARNING: This will erase your entire previous comment text."
     puts "Would you still like to update it? 'y' or 'n'"
-    if 'n' then break
-    if 'y'
-      blog[post_num_input].comments.each do |x|
-      puts  "[#{blog[post_num_input].comments.index(x) + 1}] #{x[:comment]}"
+    input = gets.chomp
+    if input == 'n'
+      puts ''
+      puts "Comment unchanged"
+      puts ''
+    elsif input == 'y'
+      numbered_comments(post_num_input)
+      puts "Which comment would you like to update? (Type the corresponding number)"
+      comment_choice = gets.chomp.to_i
+      array_number = comment_choice - 1
+      puts "Type in your username."
+      username = gets.chomp.downcase
+      puts "Go ahead a write an updated comment."
+      updated_comment = gets.chomp
+      BLOG[post_num_input][:comments][array_number][:username] = username
+      BLOG[post_num_input][:comments][array_number][:comment] = updated_comment
+      puts "Your comment has been updated!"
+      show_comments(post_num_input)
+    else
+      puts "\nThat is not an option."
+      puts ''
     end
-    puts ''
-    puts "Which comment would you like to update? (Type the corresponding number)"
-    comment_choice = gets.chomp.to_i
-    array_number = comment_choice - 1
-    puts "Type in your username with no spaces."
-    username = gets.chomp.downcase
-    puts "Go ahead a write an updated comment."
-    updated_comment = gets.chomp
-    blog[post_num_input].comments[array_number].comment_author = username
-    blog[post_num_input].comments[array_number].comment = updated_comment
-    puts "Your comment has been updated!"
   end
-
+=begin
   #adding a new post in option #3 in main program
   def add_post
     puts "Please enter a title"
