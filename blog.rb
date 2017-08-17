@@ -5,7 +5,8 @@ require_relative 'blog_array'
 include BLOG_ARRAY
 include BLOG_DEFS
 
-update_comment(0)
+
+comment_fun("y",0)
 =begin
 #Variables
 error = "That is not an option. Try again"

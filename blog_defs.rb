@@ -1,6 +1,6 @@
 module BLOG_DEFS
   #Variables
-  #error = "That is not an option. Try again"
+  ERROR_MESSAGE = "That is not an option. Try again"
   #A helper method to display all comments in a post after it's been changed
   def show_comments(post_num_input)
     puts ''
@@ -42,11 +42,10 @@ module BLOG_DEFS
     puts ''
     show_comments(post_num_input)
   end
-=begin
+
   #add a comment to the current blog post in option #1 in main program
-  def comment_fun
-    case y_or_n
-    when 'y'
+  def comment_fun(y_or_n, post_num_input)
+    if y_or_n == 'y'
       puts "Would you like to..."
       puts "[1] add a comment"
       puts "[2] delete a comment"
@@ -54,17 +53,22 @@ module BLOG_DEFS
       choice = gets.chomp
       case choice
       when "1"
-        add_comment()
+        add_comment(post_num_input)
       when "2"
-        delete_comment()
+        delete_comment(post_num_input)
       when "3"
-        update_comment()
-      else puts error
-    when 'n'
-      break
-    else puts error
+        update_comment(post_num_input)
+      else
+        puts ERROR_MESSAGE
+      end
+    elsif y_or_n == 'n'
+      puts "\n nothing changed"
+      puts ''
+    else
+      puts ERROR_MESSAGE
+    end
   end
-=end
+
 
   #add a comment to a post
   def add_comment(post_num_input)
@@ -113,7 +117,7 @@ module BLOG_DEFS
       puts "Your comment has been updated!"
       show_comments(post_num_input)
     else
-      puts "\nThat is not an option."
+      puts "\n" + ERROR_MESSAGE
       puts ''
     end
   end
