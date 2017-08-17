@@ -28,21 +28,21 @@ module BLOG_DEFS
     BLOG.each {|x| puts "[#{BLOG.index(x) + 1}]" + x.title}
     puts ''
   end
-=begin
+
   #method to display the post chosen by the user (option #1)
   def display_full_post(post_num_input)
     puts ''
-    puts BLOG[post_num_input][:title]
-    puts "by " + BLOG[post_num_input][:author]
+    puts BLOG[post_num_input].title
+    puts "by " + BLOG[post_num_input].author
     puts ''
-    puts BLOG[post_num_input][:body]
+    puts BLOG[post_num_input].body
     puts ''
     puts '----TAGS----'
-    BLOG[post_num_input][:tags].each{|x| print x," "}
+    BLOG[post_num_input].tags.each{|x| print x," "}
     puts ''
     show_comments(post_num_input)
   end
-
+=begin
   #add a comment to the current blog post in option #1 in main program
   def comment_fun
     case y_or_n
