@@ -195,53 +195,6 @@ module BLOG_DEFS
     display_posts_by_title
   end
 =end
-  #All Searching Methods for Option #2 in main program
-  #Search by title
-  def search_by_title
-    puts "Type in all or part of the title you'd like to find."
-    input = gets.chomp.downcase
-    titles_arr = []
-    i = 0
-    while i < BLOG.length
-      titles_arr << BLOG[i].title
-      i+= 1
-    end
-    puts ''
-    titles_arr.find do |x|
-      if x =~ /#{input}/
-        puts x
-      end
-    end
-    puts ''
-  end
-=begin
-  #Search by author
-  def search_by_author
-    puts "Type in all or part of the author's name to display all of his/her posts."
-    input = gets.chomp.downcase
-    blog.each {|x| x.post_author.grep(/^#{input}/)}
-  end
-  #Search by tags
-  def search_by_tags
-    puts "Type in one or more tags to find posts. (Separate each by a space.)"
-    input = gets.chomp.downcase
-    input_array = input.split(" ")
-    blog.each do |x|
-      input_array.each do |y|
-        if x.tags.select {|s| s.include? y} #Do I have to return something here to display the post(s)
-      end
-    end
-  end
-  #Search by text
-  def search_by_text
-    puts "Type in one or more words to find corresponding posts. (Separate each by a space.)"
-    input = gets.chomp.downcase
-    input_array = input.split(" ")
-    blog.each do |x|
-      input_array.each do |y|
-        if x.body.select {|s| s.include? y} #Do I have to return something here to display the post(s)
-      end
-    end
-  end
-=end
+  #Searching blogs by title, author, tags, and body
+
 end
