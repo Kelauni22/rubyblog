@@ -6,7 +6,7 @@ include BLOG_ARRAY
 include BLOG_DEFS
 
 
-search_by_title
+search_posts
 =begin
 #Variables
 error = "That is not an option. Try again"

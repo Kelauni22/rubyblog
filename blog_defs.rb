@@ -197,4 +197,29 @@ module BLOG_DEFS
 =end
   #Searching blogs by title, author, tags, and body
 
+  def search_posts
+    #collect input from user
+    puts "Search by title, author, body text or tags. Separate all words with a space."
+    input = gets.chomp
+    search_words = input.split(" ")
+    #if the input matches anything in title, author, body, or tags...
+    search_words.each do |x|
+      i = 0
+      blog_array = []
+      while i < BLOG[i]
+        blog_array << BLOG[i].title
+        blog_array << BLOG[i].author
+        blog_array << BLOG[i].body
+        tags_array = BLOG[i].tags.join(" ")
+        blog_array << tags_array
+    #print the title of that matching post
+        blog_array.find do |y|
+          if y =~ x
+            puts BLOG[i].title
+          end
+        end
+        i += 1
+      end
+    end
+  end
 end
