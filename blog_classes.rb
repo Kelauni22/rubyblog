@@ -7,7 +7,7 @@ class Post
     @author = author
     @body = body
     @tags = tags   #This will come in as an array
-    @comments = [] #Holds instances of class Comment
+    @comments = comments #Holds instances of class Comment
   end
 end
 
