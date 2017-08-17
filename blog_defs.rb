@@ -12,7 +12,7 @@ module BLOG_DEFS
     end
     puts ''
   end
-=begin
+
   #A helper method to display comments by number for user to choose from
   def numbered_comments(post_num_input)
     puts ''
@@ -24,9 +24,11 @@ module BLOG_DEFS
 
   #method to display all blog posts (option #1)
   def display_posts_by_title #Display all blog posts (only the titles)
-    BLOG.each {|x| print "[#{BLOG.index(x) + 1}]", x[:title], ", "}
+    puts ''
+    BLOG.each {|x| puts "[#{BLOG.index(x) + 1}]" + x.title}
+    puts ''
   end
-
+=begin
   #method to display the post chosen by the user (option #1)
   def display_full_post(post_num_input)
     puts ''

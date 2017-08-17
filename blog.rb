@@ -5,7 +5,7 @@ require_relative 'blog_array'
 include BLOG_ARRAY
 include BLOG_DEFS
 
-show_comments(0)
+display_posts_by_title
 =begin
 #Variables
 error = "That is not an option. Try again"
