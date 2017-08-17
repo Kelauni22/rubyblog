@@ -185,15 +185,15 @@ module BLOG_DEFS
     puts BLOG[post_num_input].tags
     puts ''
   end
-=begin
-  #method to delete a post from blog for option #5 of main program
-  def delete_post(title_num_input)
-    to_delete = title_num_input - 1
-    blog.delete_at(to_delete)
-    return blog
-    puts "Title #{blog[to_delete]} has been deleted."
-  end
 
+  #method to delete a post from blog for option #5 of main program
+  def delete_post(post_num_input)
+    BLOG.delete_at(post_num_input)
+    puts "\nSuccessfully deleted!"
+    puts ''
+    display_posts_by_title
+  end
+=begin
   #All Searching Methods for Option #2 in main program
   #Search by title
   def search_by_title

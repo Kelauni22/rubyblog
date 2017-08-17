@@ -6,7 +6,7 @@ include BLOG_ARRAY
 include BLOG_DEFS
 
 
-add_tags(0, "soft lovely")
+delete_post(0)
 =begin
 #Variables
 error = "That is not an option. Try again"
