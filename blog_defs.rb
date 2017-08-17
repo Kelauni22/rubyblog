@@ -169,19 +169,23 @@ module BLOG_DEFS
       BLOG[post_num_input].tags.delete_if {|x| x == y}
     end
     puts ''
-    puts 'Your tags have been updated'
+    puts 'Your tags have been deleted'
+    puts BLOG[post_num_input].tags
+    puts ''
+  end
+
+  #method to add tags to existing post when updating tags in option #4 of main program
+  def add_tags(post_num_input, tags_input)
+    tags_to_add = tags_input.split(" ")
+    tags_to_add.each do |x|
+      BLOG[post_num_input].tags << x
+    end
+    puts ''
+    puts 'Your tags have been added'
     puts BLOG[post_num_input].tags
     puts ''
   end
 =begin
-  #method to add tags to existing post when updating tags in option #4 of main program
-  def add_tags(tags_input)
-    tags_to_add = tags_input.split(" ")
-    tags_to_add.each do |x|
-      blogs[choice-1].tags << x
-    end
-  end
-
   #method to delete a post from blog for option #5 of main program
   def delete_post(title_num_input)
     to_delete = title_num_input - 1
