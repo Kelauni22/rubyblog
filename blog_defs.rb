@@ -31,22 +31,34 @@ module BLOG_DEFS
 
   #method to display the post chosen by the user (option #1)
   def display_full_post(post_num_input)
-    puts ''
-    puts BLOG[post_num_input].title
-    puts "by " + BLOG[post_num_input].author
-    puts ''
-    puts BLOG[post_num_input].body
-    puts ''
-    puts '----TAGS----'
-    BLOG[post_num_input].tags.each{|x| print x," "}
-    puts ''
-    show_comments(post_num_input)
+    if post_num_input >= BLOG.length
+      puts ERROR_MESSAGE
+    else
+      puts ''
+      puts BLOG[post_num_input].title
+      puts "by " + BLOG[post_num_input].author
+      puts ''
+      puts BLOG[post_num_input].body
+      puts ''
+      puts '----TAGS----'
+      BLOG[post_num_input].tags.each{|x| print x," "}
+      puts ''
+      show_comments(post_num_input)
+      puts ''
+    end
+  end
+
+  def display_full_post_update_comment(post_num_input)
+    display_full_post(post_num_input)
+    puts "Would you like to add, update, or delete a comment on this post? 'y' or 'n'"
+    y_or_n = gets.chomp.downcase
+    comment_fun(y_or_n, post_num_input) #Add, delete, or update comments
   end
 
   #add a comment to the current blog post in option #1 in main program
   def comment_fun(y_or_n, post_num_input)
     if y_or_n == 'y'
-      puts "Would you like to..."
+      puts "\nWould you like to..."
       puts "[1] add a comment"
       puts "[2] delete a comment"
       puts "[3] update a comment"
@@ -127,11 +139,11 @@ module BLOG_DEFS
     puts "WARNING: This will erase your entire previous comment text."
     puts "Would you still like to update it? 'y' or 'n'"
     input = gets.chomp
-    if input == 'n'
+    if input == "n"
       puts ''
       puts "Comment unchanged"
       puts ''
-    elsif input == 'y'
+    elsif input == "y"
       numbered_comments(post_num_input)
       puts "Which comment would you like to update? (Type the corresponding number)"
       comment_choice = gets.chomp.to_i
@@ -190,58 +202,70 @@ module BLOG_DEFS
     post_title.join(" ")
   end
 
+ #update post by title, author, body, or tags
   def update_post(post_num_input)
-    if post_num_input >= BLOGS.length
+    if post_num_input >= BLOG.length
       puts ERROR_MESSAGE
-    end
-    display_full_post(post_num_input)
-    puts ''
-    puts 'What would you like to update?'
-    puts '[a] The Title'
-    puts '[b] The Author'
-    puts '[c] The body of the post.'
-    puts '[d] The Tags'
-    puts ''
-
-    selection = gets.chomp.downcase!
-    case selection
-    when 'a'
-      puts 'Please write your new title.'
-      title_input = gets.chomp
-      final_title = title(title_input)
-      BLOG[post_num_input].title = final_title
-      puts "\nYour title has been updated to #{final_title}"
-    when 'b'
-      puts "Please enter the updated author."
-      post_author = gets.chomp.capitalize!
-      BLOG[post_num_input].post_author = post_author
-      puts "\nThe author name has been updated to #{post_author}."
-    when "c"
-      puts "WARNING: This will erase your entire previous blog text."
-      puts "Would you still like to update it? 'y' or 'n'"
-      if 'n' then break
-      if 'y' then puts "Enter your new body text."
-      update_body = gets.chomp
-      BLOG[post_num_input].body = update_body
-      puts "\nThe body of your blog post has been updated!"
-    when "d"
-      puts "Would you like to delete a tag(s) or add a tag(s)?"
-      puts "To delete, type 'd' to add type 'a'"
-      tag_choice = gets.chomp
-      case tag_choice
-      when "d"
-        puts "\nType the tag(s) you'd like to delete. Leave a space between each one."
-        tags_input = gets.chomp
-        delete_tags(post_num_input,tags_input)
+    else
+      display_full_post(post_num_input)
+      puts ''
+      puts "What would you like to update?"
+      puts "[a] The Title"
+      puts "[b] The Author"
+      puts "[c] The body of the post."
+      puts "[d] The Tags"
+      puts ''
+      input = gets.chomp
+      selection = input.downcase
+      case selection
       when "a"
-        puts "Type the tag(s) you'd like to add. Leave a space between each one."
-        tags_input = gets.chomp
-        add_tags(post_num_input, tags_input)
-      else
-        puts ERROR_MESSAGE
+        puts 'Please write your new title.'
+        title_input = gets.chomp
+        final_title = title(title_input)
+        BLOG[post_num_input].title = final_title
+        puts "\nYour title has been updated to \"#{final_title}\""
+      when "b"
+        puts "Please enter the updated author."
+        post_author = gets.chomp.capitalize!
+        BLOG[post_num_input].author = post_author
+        puts "\nThe author name has been updated to #{post_author}."
+      when "c"
+        puts "WARNING: This will erase your entire previous blog text."
+        puts "Would you still like to update it? 'y' or 'n'"
+        input = gets.chomp
+        if input == 'n'
+          puts ''
+          puts "Blog text unchanged"
+          puts ''
+        elsif input == "y"
+          puts "Enter your new body text."
+          update_body = gets.chomp
+          BLOG[post_num_input].body = update_body
+          puts "\nThe body of your blog post has been updated!"
+        else
+          puts ERROR_MESSAGE
+        end
+      when "d"
+        puts "Would you like to delete a tag(s) or add a tag(s)?"
+        puts "To delete, type 'd' to add type 'a'"
+        tag_choice = gets.chomp
+        case tag_choice
+        when "d"
+          puts ''
+          puts BLOG[post_num_input].tags
+          puts "\nType the tag(s) you'd like to delete. Leave a space between each one."
+          tags_input = gets.chomp
+          delete_tags(post_num_input,tags_input)
+        when "a"
+          puts "Type the tag(s) you'd like to add. Leave a space between each one."
+          tags_input = gets.chomp
+          add_tags(post_num_input, tags_input)
+        else
+          puts ERROR_MESSAGE
+        end
       end
-    else puts ERROR_MESSAGE
     end
+  end
 
   #method to delete tags from a post while updating tags in option #4 in the main program
   def delete_tags(post_num_input, tags_input)
