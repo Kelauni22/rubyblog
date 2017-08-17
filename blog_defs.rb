@@ -145,10 +145,10 @@ module BLOG_DEFS
     puts ''
     puts blog[blog.length-1].display_post #Can I do this?
   end
-
+=end
   #A helper method to make the title of the blog look like a normal title.
   def title(title_input)
-    words_no_cap = ["and", "or", "the", "over", "to", "the", "a", "but"]
+    words_no_cap = ["and", "or", "the", "over", "to", "the", "a", "but", "is"]
     post_title = title_input.split(" ").map {|word|
         if words_no_cap.include?(word)
             word
@@ -159,7 +159,7 @@ module BLOG_DEFS
     post_title[0].capitalize!
     return post_title
   end
-
+=begin
   #method to delete tags from a post while updating tags in option #4 in the main program
   def delete_tags(tags_input)
     tags_to_delete = tags_input.split(" ")

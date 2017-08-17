@@ -6,7 +6,7 @@ include BLOG_ARRAY
 include BLOG_DEFS
 
 
-comment_fun("y",0)
+print title("this is a pretend title")
 =begin
 #Variables
 error = "That is not an option. Try again"
