@@ -2,14 +2,17 @@ module BLOG_DEFS
   #Variables
   #error = "That is not an option. Try again"
   #A helper method to display all comments in a post after it's been changed
-=begin
   def show_comments(post_num_input)
     puts ''
     puts '----COMMENTS----'
-
+    BLOG[post_num_input].comments.each do |x|
+      puts x.username
+      puts x.comment
+      puts ''
+    end
     puts ''
   end
-
+=begin
   #A helper method to display comments by number for user to choose from
   def numbered_comments(post_num_input)
     puts ''
