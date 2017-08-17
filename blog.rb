@@ -6,7 +6,7 @@ include BLOG_ARRAY
 include BLOG_DEFS
 
 
-print title("a diamond in the rough")
+add_post
 =begin
 #Variables
 error = "That is not an option. Try again"

@@ -126,24 +126,26 @@ module BLOG_DEFS
   def add_post
     puts "Please enter a title"
     title_input = gets.chomp
-    final_title = title(title_input) #title helper method
+    post_title = title(title_input) #title helper method
 
     puts "What is your name?"
-    post_author = gets.chomp.upcase!
+    author_input = gets.chomp
+    post_author = author_input.capitalize!
 
     puts "Write your post. When finished, press enter."
-    post_body = gets.chomp
+    body_input = gets.chomp
+    post_body = body_input.capitalize!
 
     puts "List any tags for your post. Separate each with a space."
     tags_input = gets.chomp
     post_tags = tags_input.split(" ")
 
-    blog << Post.new(final_title, post_author, post_body, post_tags)
-
-    puts "Your post, #{final_title}, has been successfully posted to the Arcadia Blog!"
+    BLOG << Post.new(post_title, post_author, post_body, post_tags, comments = [])
+    puts ''
+    puts "Your post, #{post_title}, has been successfully posted to the Arcadia Blog!"
     puts '(SEE BELOW)'
     puts ''
-    puts blog[blog.length-1].display_post #Can I do this?
+    puts display_full_post(BLOG.length - 1)
   end
 
   #A helper method to make the title of the blog look like a normal title.
