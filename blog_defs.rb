@@ -77,14 +77,14 @@ module BLOG_DEFS
     "\"#{BLOG[post_num_input].title}\"!"
     show_comments(post_num_input)
   end
-=begin
+
   #delete a comment from a post
   def delete_comment(post_num_input)
     numbered_comments(post_num_input)
     puts "Which comment would you like to delete? (Type the corresponding number)."
     number = gets.chomp.to_i
     array_number = number - 1
-    BLOG[post_num_input][:comments].delete_at(array_number)
+    BLOG[post_num_input].comments.delete_at(array_number)
     puts ''
     puts "Comment number #{number} has been deleted."
     show_comments(post_num_input)
@@ -108,8 +108,8 @@ module BLOG_DEFS
       username = gets.chomp.downcase
       puts "Go ahead a write an updated comment."
       updated_comment = gets.chomp
-      BLOG[post_num_input][:comments][array_number][:username] = username
-      BLOG[post_num_input][:comments][array_number][:comment] = updated_comment
+      BLOG[post_num_input].comments[array_number].username = username
+      BLOG[post_num_input].comments[array_number].comment = updated_comment
       puts "Your comment has been updated!"
       show_comments(post_num_input)
     else
