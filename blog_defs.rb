@@ -121,7 +121,7 @@ module BLOG_DEFS
       puts ''
     end
   end
-=begin
+
   #adding a new post in option #3 in main program
   def add_post
     puts "Please enter a title"
@@ -145,19 +145,19 @@ module BLOG_DEFS
     puts ''
     puts blog[blog.length-1].display_post #Can I do this?
   end
-=end
+
   #A helper method to make the title of the blog look like a normal title.
   def title(title_input)
-    words_no_cap = ["and", "or", "the", "over", "to", "the", "a", "but", "is"]
+    words_no_cap = ["and", "or", "the", "over", "to", "the", "a", "but", "is", "in"]
     post_title = title_input.split(" ").map {|word|
         if words_no_cap.include?(word)
             word
         else
             word.capitalize!
         end
-    }.join(" ")
-    post_title[0].capitalize!
-    return post_title
+    }
+    post_title[0] = post_title[0].capitalize
+    post_title.join(" ")
   end
 =begin
   #method to delete tags from a post while updating tags in option #4 in the main program

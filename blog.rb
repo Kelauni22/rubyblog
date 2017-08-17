@@ -6,7 +6,7 @@ include BLOG_ARRAY
 include BLOG_DEFS
 
 
-print title("this is a pretend title")
+print title("a diamond in the rough")
 =begin
 #Variables
 error = "That is not an option. Try again"
