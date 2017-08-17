@@ -6,7 +6,7 @@ include BLOG_ARRAY
 include BLOG_DEFS
 
 
-delete_post(0)
+search_by_title
 =begin
 #Variables
 error = "That is not an option. Try again"
