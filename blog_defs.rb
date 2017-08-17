@@ -1,7 +1,6 @@
 module BLOG_DEFS
-=begin
   #Variables
-  ERROR_MESSAGE = "That is not an option. Try again"
+  ERROR_MESSAGE = "\nThat is not an option. Try again"
   #A helper method to display all comments in a post after it's been changed
   def show_comments(post_num_input)
     puts ''
@@ -70,6 +69,34 @@ module BLOG_DEFS
     end
   end
 
+  #Searching blogs by title, author, tags, and body
+  def search_posts
+    #collect input from user
+    puts "Search by title, author, body text or tags. Separate all words with a space."
+    input = gets.chomp
+    search_words = input.split(" ")
+    #if the input matches anything in title, author, body, or tags...
+    search_words.each do |x|
+      i = 0
+      while i < BLOG.length
+        blog_array = []
+        blog_array << BLOG[i].title
+        blog_array << BLOG[i].author
+        blog_array << BLOG[i].body
+        tags_array = BLOG[i].tags.join(" ")
+        blog_array << tags_array
+    #print the title of that matching post
+        blog_array.any? do |y|
+          if y.include?(x)
+            puts "\nYour search was found in the following title:"
+            puts BLOG[i].title
+            puts''
+          end
+        end
+        i += 1
+      end
+    end
+  end
 
   #add a comment to a post
   def add_comment(post_num_input)
@@ -163,6 +190,59 @@ module BLOG_DEFS
     post_title.join(" ")
   end
 
+  def update_post(post_num_input)
+    if post_num_input >= BLOGS.length
+      puts ERROR_MESSAGE
+    end
+    display_full_post(post_num_input)
+    puts ''
+    puts 'What would you like to update?'
+    puts '[a] The Title'
+    puts '[b] The Author'
+    puts '[c] The body of the post.'
+    puts '[d] The Tags'
+    puts ''
+
+    selection = gets.chomp.downcase!
+    case selection
+    when 'a'
+      puts 'Please write your new title.'
+      title_input = gets.chomp
+      final_title = title(title_input)
+      BLOG[post_num_input].title = final_title
+      puts "\nYour title has been updated to #{final_title}"
+    when 'b'
+      puts "Please enter the updated author."
+      post_author = gets.chomp.capitalize!
+      BLOG[post_num_input].post_author = post_author
+      puts "\nThe author name has been updated to #{post_author}."
+    when "c"
+      puts "WARNING: This will erase your entire previous blog text."
+      puts "Would you still like to update it? 'y' or 'n'"
+      if 'n' then break
+      if 'y' then puts "Enter your new body text."
+      update_body = gets.chomp
+      BLOG[post_num_input].body = update_body
+      puts "\nThe body of your blog post has been updated!"
+    when "d"
+      puts "Would you like to delete a tag(s) or add a tag(s)?"
+      puts "To delete, type 'd' to add type 'a'"
+      tag_choice = gets.chomp
+      case tag_choice
+      when "d"
+        puts "\nType the tag(s) you'd like to delete. Leave a space between each one."
+        tags_input = gets.chomp
+        delete_tags(post_num_input,tags_input)
+      when "a"
+        puts "Type the tag(s) you'd like to add. Leave a space between each one."
+        tags_input = gets.chomp
+        add_tags(post_num_input, tags_input)
+      else
+        puts ERROR_MESSAGE
+      end
+    else puts ERROR_MESSAGE
+    end
+
   #method to delete tags from a post while updating tags in option #4 in the main program
   def delete_tags(post_num_input, tags_input)
     tags_to_delete = tags_input.split(" ")
@@ -193,33 +273,5 @@ module BLOG_DEFS
     puts "\nSuccessfully deleted!"
     puts ''
     display_posts_by_title
-  end
-=end
-  #Searching blogs by title, author, tags, and body
-
-  def search_posts
-    #collect input from user
-    puts "Search by title, author, body text or tags. Separate all words with a space."
-    input = gets.chomp
-    search_words = input.split(" ")
-    #if the input matches anything in title, author, body, or tags...
-    search_words.each do |x|
-      i = 0
-      while i < BLOG.length
-        blog_array = []
-        blog_array << BLOG[i].title
-        blog_array << BLOG[i].author
-        blog_array << BLOG[i].body
-        tags_array = BLOG[i].tags.join(" ")
-        blog_array << tags_array
-    #print the title of that matching post
-        blog_array.any? do |y|
-          if y.include?(x)
-            puts BLOG[i].title
-          end
-        end
-        i += 1
-      end
-    end
   end
 end
